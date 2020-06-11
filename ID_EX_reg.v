@@ -8,7 +8,8 @@ Student ID:
 module ID_EX_reg(
 	input          clk_i,
     	input          rst_i,
-	/*Control signal input*/
+	
+
 	input          ALUSrc_i,
 	input          MemtoReg_i,
 	input          RegWrite_i,
@@ -17,7 +18,7 @@ module ID_EX_reg(
 	input          Branch_i,
 	input [1:0]    ALUOp_i,
 	
-	/*Data input*/
+
 	input  		[32-1:0] pc_ID_EX_i,
         input  		[32-1:0] RSdata_i,
         input  		[32-1:0] RTdata_i,
@@ -27,7 +28,7 @@ module ID_EX_reg(
 	input		[5-1:0]  Rs1_IF_ID_i,
 	input		[5-1:0]  Rs2_IF_ID_i,
 
-	/*Control signal output*/
+
 	output reg          ALUSrc_o,
 	output reg          MemtoReg_o,
 	output reg          RegWrite_o,
@@ -36,7 +37,7 @@ module ID_EX_reg(
 	output reg          Branch_o,
 	output reg [1:0]    ALUOp_o,
 	
-	/*Data output*/
+
 	output reg [32-1:0] pc_ID_EX_o,
 	output reg [32-1:0] RSdata_o,
         output reg [32-1:0] RTdata_o,
@@ -53,14 +54,14 @@ always@(posedge clk_i) begin
 			/* WB */
 			MemtoReg_o <= 1'd0;
 	        	RegWrite_o <= 1'd0;
-	        	/* M*/
+	        	/* M No jump */
 			MemRead_o  <= 1'd0;
 	        	MemWrite_o <= 1'd0;
 	        	Branch_o   <= 1'd0;
-	   		/* Ex*/
+	   		/* EX */
 			ALUOp_o    <= 1'd0;
 			ALUSrc_o   <= 2'd0;
-			/* Data*/
+			/* Data */
 			pc_ID_EX_o <= 32'd0;
 			RSdata_o   <= 32'd0;
 			RTdata_o   <= 32'd0;
@@ -75,14 +76,14 @@ always@(posedge clk_i) begin
 			/* WB */
 			MemtoReg_o <= MemtoReg_i;
 	        	RegWrite_o <= RegWrite_i;
-	        	/* M*/
+	        	/* M No jump */
 			MemRead_o  <= MemRead_i;
 	        	MemWrite_o <= MemWrite_i;
 	        	Branch_o   <= Branch_i;
-	   		/* Ex*/
+	   		/* EX */
 			ALUOp_o    <= ALUOp_i;
 			ALUSrc_o   <= ALUSrc_i;
-			/* Data*/
+			/* Data */
 			pc_ID_EX_o <= pc_ID_EX_i;
 			RSdata_o   <= RSdata_i;
 			RTdata_o   <= RTdata_i;

@@ -8,13 +8,12 @@ Student ID:
 module IF_ID_reg(
 	input          clk_i,
     	input          rst_i,
-	
-	
-	/*Data input*/
+		
+
         input  		[32-1:0] pc_i,
         input		[32-1:0] instr_i,
 
-	/*Data output*/
+
 	output reg [32-1:0] pc_o,
 	output reg [32-1:0] instr_o
 );
